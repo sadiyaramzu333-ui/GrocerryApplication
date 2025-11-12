@@ -17,7 +17,7 @@ public WebDriver driver;     //webdriver intialization
 		//url up --- chrome 
 		driver.get(" https://groceryapp.uniqassosiates.com/admin/login");  // url get
 		driver.manage().window().maximize();  // to maximize automatically
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));//implicit waits
 	}
 	@AfterMethod
 		public void  driverCloseAndQuit()

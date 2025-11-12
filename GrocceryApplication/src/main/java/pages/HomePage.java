@@ -19,6 +19,9 @@ public class HomePage {
 	@FindBy(xpath="//i[@class='ace-icon fa fa-power-off']") WebElement logoutbutton;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin' and @class='small-box-footer']")
 	WebElement adminMoreInfoLink;
+	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")WebElement manageNewsMoreInfoLink;
+
+	
 	
 	
 	public void clickOnAdminLink()
@@ -33,6 +36,10 @@ public class HomePage {
 	public void clickOnAdminMoreInfoLink()
 	{
 		adminMoreInfoLink.click();
+	}
+	public void clickOnNewsMoreInfoLink()
+	{
+		manageNewsMoreInfoLink.click();	
 	}
 	
 	
