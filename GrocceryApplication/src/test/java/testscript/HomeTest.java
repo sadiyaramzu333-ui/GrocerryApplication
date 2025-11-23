@@ -2,15 +2,17 @@ package testscript;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constant.Constant;
 import pages.HomePage;
 import pages.LoginPage;
 import utility.ExcelUtility;
 
 public class HomeTest extends Base{
-	@Test
+	@Test(description="verifying user successfully logout ",retryAnalyzer = retry.Retry.class)
 	public void VerifyUSerCanLogoutSucessfully() throws IOException
 	{
 		String username= ExcelUtility.getStringData(0, 0, "LoginPage");
@@ -24,6 +26,9 @@ public class HomeTest extends Base{
 		HomePage homepage = new HomePage(driver);
 		homepage.clickOnAdminLink();
 		homepage.clickOnLogoutButton();
+		boolean issigntextdisplayed = homepage.isSignInTextDisplayed();
+		Assert.assertTrue(issigntextdisplayed,Constant.logouterrormessage);
+		
 		
 	}
 	

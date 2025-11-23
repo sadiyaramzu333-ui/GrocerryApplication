@@ -4,11 +4,10 @@ import com.github.javafaker.Faker;
 
 public class FakerUtility 
 {
-	Faker faker = new Faker();
+	Faker faker = new Faker(); 
 	public String createRandomUsername()
 	{
 		return faker.name().username();   //create fake username
-		
 	}
 	public String createRandomPassword()
 	{

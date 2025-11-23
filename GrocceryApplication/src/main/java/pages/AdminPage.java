@@ -24,6 +24,9 @@ public class AdminPage {
 	@FindBy(id="ut")WebElement userTypeDropdownOnSearchUser;
 	@FindBy(xpath = "//button[@value='sr']")WebElement searchbttn;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']")WebElement resetbutton;
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement successalert;
+	@FindBy(xpath="//a[@class='page-link']")WebElement usernameresult;
+	
 	
 	
 	
@@ -71,6 +74,19 @@ public class AdminPage {
     {
     	resetbutton.click();
     }
+    public boolean isUserCreationSuccessAlertDisplayed()
+    {
+    	return successalert.isDisplayed();
+    }
+    public boolean isSearchedUserDisplayed() 
+    {
+    	return usernameresult.isDisplayed();
+    }
+    public boolean isResetButtonDisplayed()
+    {
+    	return resetbutton.isDisplayed();
+    }
+
   
 
 }

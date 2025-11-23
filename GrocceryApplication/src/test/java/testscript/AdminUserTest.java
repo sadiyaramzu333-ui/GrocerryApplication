@@ -2,9 +2,11 @@ package testscript;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constant.Constant;
 import pages.AdminPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -13,7 +15,7 @@ import utility.FakerUtility;
 
 public class AdminUserTest extends Base {
 	
-		@Test
+		@Test(priority=1,description="verifying user able to add new user")
 	public void verifyUserAbleToAddNewAdminUser() throws IOException
 	{
 			String username= ExcelUtility.getStringData(0, 0, "LoginPage");
@@ -35,8 +37,12 @@ public class AdminUserTest extends Base {
 		adminpage.enterpasswordOnPasswordFeild(password1);
 		adminpage.selectingUserType();
 		adminpage.ClickOnSaveButton();
+		
+		boolean isSuccessAlertDisplayed  = adminpage.isUserCreationSuccessAlertDisplayed();
+		Assert.assertTrue(isSuccessAlertDisplayed,Constant.addingnewusererrormessage);
+		
 	}
-		@Test
+		@Test(priority=2,description="verying user able to search newly added user")
 
 	public void verifyUserAbleToSearchNewlyAddedAdminUser() throws IOException
 	{
@@ -56,9 +62,13 @@ public class AdminUserTest extends Base {
 		adminpage.enterUsernameOnSearchAdminUsers(username1);
 		adminpage.selectUserTypeOnSearchAdminUser();
 		adminpage.clickOnSearchButtonOnAdminSeachUser();
+		
+		boolean isUserFound  = adminpage.isSearchedUserDisplayed();
+		Assert.assertTrue(isUserFound,Constant.searchingusererrormessage);
+		
 
 	}
-		@Test
+		@Test(priority=3,description="verifying user able to reset admin user")
 		public void verifyUserAbleToResetAdminUser() throws IOException
 		{
 			String username= ExcelUtility.getStringData(0, 0, "LoginPage");
@@ -72,6 +82,9 @@ public class AdminUserTest extends Base {
 			homepage.clickOnAdminMoreInfoLink();
 			AdminPage adminpage = new AdminPage(driver);
 			adminpage.clickOnResetButtonOnAdminUser();
+			boolean isresetbuttondisplayed = adminpage.isResetButtonDisplayed();
+			Assert.assertTrue(isresetbuttondisplayed,Constant.resetusererrormessage);
+			
 
 			
 		}
