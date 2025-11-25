@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="classes" name="Failed suite [multibrowser testing]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="classes" name="Test two(failed)">
+    <parameter name="browsers" value="firefox"/>
+    <classes>
+      <class name="testscript.AdminUserTest">
+        <methods>
+          <include name="verifyUserAbleToSearchNewlyAddedAdminUser"/>
+          <include name="driverQuit"/>
+          <include name="intializeBrowser"/>
+        </methods>
+      </class> <!-- testscript.AdminUserTest -->
+    </classes>
+  </test> <!-- Test two(failed) -->
+</suite> <!-- Failed suite [multibrowser testing] -->

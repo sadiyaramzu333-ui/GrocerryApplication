@@ -28,11 +28,12 @@ public class AdminUserTest extends Base {
 			HomePage homepage = new HomePage(driver);
 			homepage.clickOnAdminMoreInfoLink();
 			
-		  FakerUtility fakerutility = new FakerUtility();
-		String username1= fakerutility.createRandomUsername();
-		String password1= fakerutility.createRandomPassword();
+		  
 		AdminPage adminpage = new AdminPage(driver);
 		adminpage.addNewUser();
+		FakerUtility fakerutility = new FakerUtility();
+		String username1= fakerutility.createRandomUsername();
+		String password1= fakerutility.createRandomPassword();
 		adminpage.enterUsernameOnUsernameFeild(username1);
 		adminpage.enterpasswordOnPasswordFeild(password1);
 		adminpage.selectingUserType();
@@ -42,7 +43,7 @@ public class AdminUserTest extends Base {
 		Assert.assertTrue(isSuccessAlertDisplayed,Constant.addingnewusererrormessage);
 		
 	}
-		@Test(priority=2,description="verying user able to search newly added user")
+		@Test(priority=2,description="verifying user able to search newly added user")
 
 	public void verifyUserAbleToSearchNewlyAddedAdminUser() throws IOException
 	{
@@ -56,9 +57,10 @@ public class AdminUserTest extends Base {
 		HomePage homepage = new HomePage(driver);
 		homepage.clickOnAdminMoreInfoLink();
 		
-		String username1= ExcelUtility.getStringData(0, 0, "AdminPage");
 		AdminPage adminpage = new AdminPage(driver);
 		adminpage.clickOnSearchButton();
+		String username1= ExcelUtility.getStringData(0, 0, "AdminPage");
+;
 		adminpage.enterUsernameOnSearchAdminUsers(username1);
 		adminpage.selectUserTypeOnSearchAdminUser();
 		adminpage.clickOnSearchButtonOnAdminSeachUser();
