@@ -9,8 +9,8 @@
 	<test thread-count="5" name="Test">
 		<classes>
 
-			<class name="testscript.LoginTest">
-			<methods><include name="verifyUserLoginWithInvalidCredentials"></include></methods>
+			<class name="testscript.ManageNewsTest">
+			
 			
 				
 			</class>

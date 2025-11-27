@@ -28,34 +28,37 @@ public class ManageNewsPage {
 
 
 	
-	public void addNewNews()
+	public ManageNewsPage addNewNews()
 	{
 		newButton.click();
+		return this;
 	}
-	public void enterNewsOnNewsField(String news)
+	public ManageNewsPage enterNewsOnNewsField(String news)
 	{
 		newsfield.sendKeys(news);
+		return this;
 	}
-	public void clickOnSubmitButton()
+	public ManageNewsPage clickOnSubmitButton()
 	{
 		submitButton.click();
+		return this;
 	}
-	public void clickOnSearchButtonOnManageNews()
+	public ManageNewsPage clickOnSearchButtonOnManageNews()
 	{
 		searchButton.click();
+		return this;
 	}
-	public void enterNewsOnTitleField(String news)
+	public ManageNewsPage enterNewsOnTitleField(String news)
 	{
 		searchnewsFeild.sendKeys(news);
+		return this;
 	}
-	public void clickOnSearchButtonOnSearchingNews()
+	public ManageNewsPage clickOnSearchButtonOnSearchingNews()
 	{
 		searchButton1.click();
+		return this;
 	}
-	public void clickOnResetButtonOnManageNews()
-	{
-		resetbutton.click();
-	}
+	
 	public boolean isNewsCreatedSuccessfullyDisplayed()
     {
     	return successnewsalert.isDisplayed();   

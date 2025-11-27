@@ -6,8 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import constant.Constant;
+import utility.PageUtility;
+import utility.WaitUtility;
+
 public class AdminPage {
 	public WebDriver driver;
+	PageUtility pageutility = new PageUtility();
+	WaitUtility waitUtility = new WaitUtility();
 	public AdminPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -30,49 +36,62 @@ public class AdminPage {
 	
 	
 	
-	public void addNewUser()
+	public AdminPage addNewUser()
 	{
+		waitUtility.waitUntilElementToBeClickable(driver, newbutton);
 		newbutton.click();
+		return this;
 	}
 	
-    public void enterUsernameOnUsernameFeild(String username1) 
+    public AdminPage enterUsernameOnUsernameFeild(String username1) 
     {
     	usernamefield.sendKeys(username1);
+    	return this;
     }
-    public void enterpasswordOnPasswordFeild(String password1)
+    public AdminPage enterpasswordOnPasswordFeild(String password1)
     {
     	passwordfield.sendKeys(password1);
+    	return this;
     }
-    public void selectingUserType()
+    public AdminPage selectingUserType()
     {
-    	Select select = new Select(usertypedropdown);
-    	select.selectByValue("admin");		
+    	pageutility.selectDropdownWithValue(usertypedropdown,Constant.dropdownvalue);
+    	//Select select = new Select(usertypedropdown);
+    	//select.selectByValue("admin");	
+    	return this;
     }
-    public void ClickOnSaveButton() 
+    public AdminPage ClickOnSaveButton() 
     {
     	savebutton.click();
+    	return this;
     }
-    public void clickOnSearchButton() 
+    public AdminPage clickOnSearchButton() 
     {
+    	
     	searchbutton.click();
+    	return this;
     }
-    public void enterUsernameOnSearchAdminUsers(String username)
+    public AdminPage enterUsernameOnSearchAdminUsers(String username)
     {
     	usernameFeildonSearchUser.sendKeys(username);
+    	return this;
     }
-    public void selectUserTypeOnSearchAdminUser()
+    public AdminPage selectUserTypeOnSearchAdminUser()
     {
         Select select = new Select(userTypeDropdownOnSearchUser);
         select.selectByValue("admin");
+        return this;
     }
     
-    public void clickOnSearchButtonOnAdminSeachUser()
+    public AdminPage clickOnSearchButtonOnAdminSeachUser()
     {
     	searchbttn.click();
+    	return this;
     }
-    public void clickOnResetButtonOnAdminUser()
+    public AdminPage clickOnResetButtonOnAdminUser()
     {
     	resetbutton.click();
+    	return this;
     }
     public boolean isUserCreationSuccessAlertDisplayed()
     {

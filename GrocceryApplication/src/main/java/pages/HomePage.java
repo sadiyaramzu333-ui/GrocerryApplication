@@ -24,20 +24,24 @@ public class HomePage {
 	WebElement manageNewsMoreInfoLink;
 	@FindBy(xpath="//p[text()='Sign in to start your session']")WebElement signintext;
 
-	public void clickOnAdminLink() {
+	public HomePage clickOnAdminLink() {
 		adminbutton.click();
+		return this;
 	}
 
-	public void clickOnLogoutButton() {
+	public LoginPage clickOnLogoutButton() {
 		logoutbutton.click();
+		return new LoginPage(driver);
 	}
 
-	public void clickOnAdminMoreInfoLink() {
+	public AdminPage clickOnAdminMoreInfoLink() {
 		adminMoreInfoLink.click();
+		return new AdminPage(driver);
 	}
 
-	public void clickOnNewsMoreInfoLink() {
+	public ManageNewsPage clickOnNewsMoreInfoLink() {
 		manageNewsMoreInfoLink.click();
+		return new ManageNewsPage(driver);
 	}
 	public boolean isSignInTextDisplayed()
 	{

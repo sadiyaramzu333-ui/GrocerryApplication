@@ -12,7 +12,8 @@ public class Constant {
 	public static final String resetusererrormessage="user is unable to click reset button";
 	public static final String addingnewserrormessage="user unable to add news";
 	public static final String searchingnewserrormessage="user nable to search the news";
-	
+	public static final String dropdownvalue="admin";
+	public static final String configfile= System.getProperty("user.dir")+"\\src\\main\\resources\\config.properties";
 	
 
 }

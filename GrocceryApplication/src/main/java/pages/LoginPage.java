@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utility.WaitUtility;
+
 public class LoginPage {
 	public WebDriver driver;
+	WaitUtility waitutility = new WaitUtility();
 	public LoginPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -19,19 +22,23 @@ public class LoginPage {
 	@FindBy(xpath="//b[text()='7rmart supermarket']")WebElement title;
 	
 	
-	public void enterUsernameOnUsernameField(String username)
+	public LoginPage enterUsernameOnUsernameField(String username) //chaining of pages
 	{
 		usernamefield.sendKeys(username);
+		return this;
 
 	}
-	public void enterPasswordOnPasswordField(String password)
+	public LoginPage enterPasswordOnPasswordField(String password)
 	{
 		passwordfield.sendKeys(password);
+		return this;
 
 	}
-	public void clickOnSignInButton()
+	public HomePage clickOnSignInButton()
 	{
+		waitutility.waitUntilElementToBeClickable(driver, signinbutton);
 		signinbutton.click();
+		return new HomePage(driver);
 	}
 	public boolean dashBoardDisplayed()
 	{

@@ -14,6 +14,8 @@ import utility.ExcelUtility;
 import utility.FakerUtility;
 
 public class AdminUserTest extends Base {
+	HomePage homepage;
+	AdminPage adminpage;
 	
 		@Test(priority=1,description="verifying user able to add new user")
 	public void verifyUserAbleToAddNewAdminUser() throws IOException
@@ -22,22 +24,19 @@ public class AdminUserTest extends Base {
 			String password= ExcelUtility.getStringData(0, 1,"LoginPage");
 			
 			LoginPage loginpage = new LoginPage(driver);
-			loginpage.enterUsernameOnUsernameField(username);
-			loginpage.enterPasswordOnPasswordField(password);
-			loginpage.clickOnSignInButton();
-			HomePage homepage = new HomePage(driver);
-			homepage.clickOnAdminMoreInfoLink();
+			loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+			homepage=loginpage.clickOnSignInButton();
+			//HomePage homepage = new HomePage(driver);
+			adminpage=homepage.clickOnAdminMoreInfoLink();
 			
 		  
-		AdminPage adminpage = new AdminPage(driver);
-		adminpage.addNewUser();
+		//AdminPage adminpage = new AdminPage(driver);
 		FakerUtility fakerutility = new FakerUtility();
 		String username1= fakerutility.createRandomUsername();
 		String password1= fakerutility.createRandomPassword();
-		adminpage.enterUsernameOnUsernameFeild(username1);
-		adminpage.enterpasswordOnPasswordFeild(password1);
-		adminpage.selectingUserType();
-		adminpage.ClickOnSaveButton();
+		adminpage.addNewUser();
+		
+		adminpage.enterUsernameOnUsernameFeild(username1).enterpasswordOnPasswordFeild(password1).selectingUserType().ClickOnSaveButton();
 		
 		boolean isSuccessAlertDisplayed  = adminpage.isUserCreationSuccessAlertDisplayed();
 		Assert.assertTrue(isSuccessAlertDisplayed,Constant.addingnewusererrormessage);
@@ -51,19 +50,14 @@ public class AdminUserTest extends Base {
 		String password= ExcelUtility.getStringData(0, 1,"LoginPage");
 		
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsernameOnUsernameField(username);
-		loginpage.enterPasswordOnPasswordField(password);
-		loginpage.clickOnSignInButton();
-		HomePage homepage = new HomePage(driver);
-		homepage.clickOnAdminMoreInfoLink();
+		loginpage.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		homepage=loginpage.clickOnSignInButton();
+		//HomePage homepage = new HomePage(driver);
+		adminpage=homepage.clickOnAdminMoreInfoLink();
 		
 		AdminPage adminpage = new AdminPage(driver);
-		adminpage.clickOnSearchButton();
 		String username1= ExcelUtility.getStringData(0, 0, "AdminPage");
-;
-		adminpage.enterUsernameOnSearchAdminUsers(username1);
-		adminpage.selectUserTypeOnSearchAdminUser();
-		adminpage.clickOnSearchButtonOnAdminSeachUser();
+		adminpage.clickOnSearchButton().enterUsernameOnSearchAdminUsers(username1).selectUserTypeOnSearchAdminUser().clickOnSearchButtonOnAdminSeachUser();
 		
 		boolean isUserFound  = adminpage.isSearchedUserDisplayed();
 		Assert.assertTrue(isUserFound,Constant.searchingusererrormessage);
@@ -79,10 +73,11 @@ public class AdminUserTest extends Base {
 			LoginPage loginpage = new LoginPage(driver);
 			loginpage.enterUsernameOnUsernameField(username);
 			loginpage.enterPasswordOnPasswordField(password);
-			loginpage.clickOnSignInButton();
-			HomePage homepage = new HomePage(driver);
-			homepage.clickOnAdminMoreInfoLink();
+			homepage=loginpage.clickOnSignInButton();
+			//HomePage homepage = new HomePage(driver);
 			AdminPage adminpage = new AdminPage(driver);
+
+			adminpage=homepage.clickOnAdminMoreInfoLink();
 			adminpage.clickOnResetButtonOnAdminUser();
 			boolean isresetbuttondisplayed = adminpage.isResetButtonDisplayed();
 			Assert.assertTrue(isresetbuttondisplayed,Constant.resetusererrormessage);
